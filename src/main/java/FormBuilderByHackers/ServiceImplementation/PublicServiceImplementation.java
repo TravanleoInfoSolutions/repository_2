@@ -1,7 +1,9 @@
 package FormBuilderByHackers.ServiceImplementation;
 
 import FormBuilderByHackers.DataAccessObject.PublicDAO;
+import FormBuilderByHackers.DataTransferObject.LoginDTO;
 import FormBuilderByHackers.DataTransferObject.UserRegistrationDTO;
+import FormBuilderByHackers.Model.UserDetails;
 import FormBuilderByHackers.Service.PublicService;
 import FormBuilderByHackers.Utilities.GenericResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +25,10 @@ public class PublicServiceImplementation implements PublicService {
             genericResponse =  new GenericResponse("Invalid Email Id");
         }
         return genericResponse;
+    }
+
+    @Override
+    public GenericResponse validateUser(LoginDTO loginDto) {
+        return publicDAO.validateUser(loginDto);
     }
 }
