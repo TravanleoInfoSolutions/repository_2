@@ -23,7 +23,7 @@ public class FormAttribute implements Serializable {
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="form_attribute_gen")
     @SequenceGenerator(name="form_attribute_gen", sequenceName="FormAttribute_SEQ",allocationSize = 10)
     @Column(name = "attribute_id")
-    private long attributeId;
+    private Long attributeId;
 
     @Column(name = "attribute_name",length = 800)
     private String attributeName;
@@ -71,11 +71,11 @@ public class FormAttribute implements Serializable {
 
     }
 
-    public long getAttributeId() {
+    public Long getAttributeId() {
         return attributeId;
     }
 
-    public void setAttributeId(long attributeId) {
+    public void setAttributeId(Long attributeId) {
         this.attributeId = attributeId;
     }
 

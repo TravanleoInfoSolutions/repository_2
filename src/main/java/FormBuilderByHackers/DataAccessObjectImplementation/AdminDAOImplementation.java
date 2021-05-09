@@ -56,6 +56,7 @@ public class AdminDAOImplementation implements AdminDAO {
             genericResponse = new GenericResponse(response,true);
         }
         catch (Exception e){
+            e.printStackTrace();
             genericResponse = new GenericResponse("unexpected error");
         }
         return genericResponse;
