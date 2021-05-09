@@ -18,7 +18,7 @@ import javax.validation.Valid;
  * @author bhavesh
  *
  */
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/public")
 public class PublicController {
@@ -32,6 +32,10 @@ public class PublicController {
             return new GenericResponse("Email Id cannot be empty");
         }
         return publicService.userRegistration(registrationDTO);
+    }
+    @PostMapping("/login")
+    public GenericResponse login(@RequestBody LoginDTO loginDTO){
+        return publicService.validateUser(loginDTO);
     }
 
 }
