@@ -14,7 +14,7 @@ public class FormAttributeDTO {
     private Long attributeTypeId;
     private String groupName;
     private Integer attributeOrder;
-    private Set<AttributeListDetails> AttributeListDetailsSet = new HashSet<>();
+    private Set<AttributeListDetails> attributeListDetailsSet = new HashSet<>();
 
     public Long getAttributeId() {
         return attributeId;
@@ -58,10 +58,10 @@ public class FormAttributeDTO {
     }
 
     public Set<AttributeListDetails> getAttributeListDetailsSet() {
-        return AttributeListDetailsSet;
+        return attributeListDetailsSet;
     }
 
     public void setAttributeListDetailsSet(Set<AttributeListDetails> attributeListDetailsSet) {
-        AttributeListDetailsSet = attributeListDetailsSet;
+        this.attributeListDetailsSet = attributeListDetailsSet;
     }
 }
