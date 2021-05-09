@@ -19,7 +19,7 @@ public class AttributeDataDetails implements Serializable {
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="attribute_data_details_gen")
     @SequenceGenerator(name="attribute_data_details_gen", sequenceName="AttributeDataDetails_SEQ",allocationSize = 10)
     @Column(name = "attribute_data_details_id")
-    private long attributeDataDetailsId;
+    private Long attributeDataDetailsId;
 
     @Column(name = "attribute_id")
     private long attributeId;
@@ -47,11 +47,11 @@ public class AttributeDataDetails implements Serializable {
     @Column(name = "update_date")
     private Timestamp updatedDate = new Timestamp(new Date().getTime());
 
-    public long getAttributeDataDetailsId() {
+    public Long getAttributeDataDetailsId() {
         return attributeDataDetailsId;
     }
 
-    public void setAttributeDataDetailsId(long attributeDataDetailsId) {
+    public void setAttributeDataDetailsId(Long attributeDataDetailsId) {
         this.attributeDataDetailsId = attributeDataDetailsId;
     }
 

@@ -1,5 +1,7 @@
 package FormBuilderByHackers.Model;
 
+import FormBuilderByHackers.DataTransferObject.FormAttributeDTO;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -55,6 +57,19 @@ public class FormAttribute implements Serializable {
 
     @Column(name = "update_date")
     private Timestamp updatedDate = new Timestamp(new Date().getTime());
+
+    public FormAttribute(){
+
+    }
+
+    public FormAttribute(FormAttributeDTO formAttributeDTO){
+        this.attributeId = formAttributeDTO.getAttributeId();
+        this.attributeName = formAttributeDTO.getAttributeName();
+        this.attributeTypeId = formAttributeDTO.getAttributeTypeId();
+        this.groupName = formAttributeDTO.getGroupName();
+        this.attributeOrder = formAttributeDTO.getAttributeOrder();
+
+    }
 
     public long getAttributeId() {
         return attributeId;

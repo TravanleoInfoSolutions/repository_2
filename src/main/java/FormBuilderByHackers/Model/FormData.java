@@ -2,6 +2,8 @@ package FormBuilderByHackers.Model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,6 +35,12 @@ public class FormData implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "formData")
     @OrderBy("attribute_list_details_id ASC")
     private Set<AttributeDataDetails> AttributeDataDetailsSet = new HashSet<>();
+
+    @Column(name = "created_date", updatable = false)
+    private Timestamp createdDate = new Timestamp(new Date().getTime());
+
+    @Column(name = "update_date")
+    private Timestamp updatedDate = new Timestamp(new Date().getTime());
 
     public long getFormDataId() {
         return formDataId;
@@ -72,5 +80,21 @@ public class FormData implements Serializable {
 
     public void setAttributeDataDetailsSet(Set<AttributeDataDetails> attributeDataDetailsSet) {
         AttributeDataDetailsSet = attributeDataDetailsSet;
+    }
+
+    public Timestamp getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Timestamp createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Timestamp getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Timestamp updatedDate) {
+        this.updatedDate = updatedDate;
     }
 }
