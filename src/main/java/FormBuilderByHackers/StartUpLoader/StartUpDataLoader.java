@@ -14,7 +14,7 @@ public class StartUpDataLoader implements ApplicationListener<ContextRefreshedEv
 private AttributeTypeRepository attributeTypeRepository;
 
 
-boolean updateDatabaseMasters = false;
+boolean updateDatabaseMasters = true;
     public void onApplicationEvent(final ContextRefreshedEvent event) {
         if(updateDatabaseMasters) {
 
@@ -37,6 +37,10 @@ boolean updateDatabaseMasters = false;
                     AttributeTypeLiterals.ATTRIBUTE_TYPE_MULTI_LIST_CODE.getValue());
             this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_RADIO_BUTTON_NAME.getValue(),
                     AttributeTypeLiterals.ATTRIBUTE_TYPE_RADIO_BUTTON_CODE.getValue());
+            this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_TEXT_BOX_NAME.getValue(),
+                    AttributeTypeLiterals.ATTRIBUTE_TYPE_TEXT_BOX_CODE.getValue());
+            this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_TEXT_AREA_NAME.getValue(),
+                    AttributeTypeLiterals.ATTRIBUTE_TYPE_TEXT_AREA_CODE.getValue());
 
         }
     }
