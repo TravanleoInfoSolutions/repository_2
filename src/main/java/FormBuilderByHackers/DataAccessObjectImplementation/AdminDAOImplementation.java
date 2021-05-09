@@ -122,4 +122,16 @@ public class AdminDAOImplementation implements AdminDAO {
         }
         return genericResponse;
     }
+
+    public GenericResponse fetchAttributeById(Long attributeId){
+        GenericResponse genericResponse;
+        try{
+            FormAttribute formAttribute = formAttributeRepository.findById(attributeId).orElse(null);
+            genericResponse = new GenericResponse(formAttribute,true);
+        }
+        catch (Exception e){
+            genericResponse = new GenericResponse("unexpected error");
+        }
+        return genericResponse;
+    }
 }

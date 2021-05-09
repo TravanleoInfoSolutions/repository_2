@@ -16,4 +16,6 @@ public interface AdminDAO {
     GenericResponse createForm(FormData formData, UserDetails currentUserDetails);
 
     GenericResponse listForms(ListDTO listDTO,UserDetails currentUserDetails);
+
+    GenericResponse fetchAttributeById(Long attributeId);
 }

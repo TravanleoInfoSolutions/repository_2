@@ -19,4 +19,6 @@ public interface AdminService {
 
     GenericResponse fetchFormsById(Long formDataId);
 
+    GenericResponse fetchAttributeById(Long attributeId);
+
 }

@@ -70,5 +70,9 @@ public class AdminController {
         return jsonConverter.convertEntityToJsonProxy(adminService.fetchFormsById(formDataId),new FormViewStrategy());
     }
 
+    @GetMapping("/fetchAttributeById")
+    public GenericResponse fetchAttributeById(@RequestParam Long attributeId){
+        return adminService.fetchAttributeById(attributeId);
+    }
 
 }
