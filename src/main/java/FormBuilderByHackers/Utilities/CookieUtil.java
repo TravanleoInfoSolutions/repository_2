@@ -25,7 +25,7 @@ public class CookieUtil {
         response.addCookie(uiColorCookie);
     }
 
-    public void removeCookie(String cookieName) {
+    public void removeCookie(String cookieName,HttpServletResponse response) {
         Cookie uiColorCookie = new Cookie(cookieName, null);
         uiColorCookie.setMaxAge(0);
         uiColorCookie.setDomain(SERVER_URL);

@@ -43,8 +43,8 @@ public class PublicController {
     }
 
     @PostMapping("/logout")
-    public GenericResponse logout(){
-        new CookieUtil().removeCookie("authorization");
+    public GenericResponse logout(HttpServletResponse response){
+        new CookieUtil().removeCookie("authorization",response);
         return new GenericResponse("logged out successfully",true);
     }
 
