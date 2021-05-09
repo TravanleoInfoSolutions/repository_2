@@ -1,15 +1,15 @@
 package FormBuilderByHackers.Controller;
 
+import FormBuilderByHackers.DataTransferObject.LoginDTO;
 import FormBuilderByHackers.DataTransferObject.UserRegistrationDTO;
 import FormBuilderByHackers.Service.PublicService;
 import FormBuilderByHackers.Utilities.GenericResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
 import javax.validation.Valid;
 
 /**
@@ -33,6 +33,5 @@ public class PublicController {
         }
         return publicService.userRegistration(registrationDTO);
     }
-
 
 }
