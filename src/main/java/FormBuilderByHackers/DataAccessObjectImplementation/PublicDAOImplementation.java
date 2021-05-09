@@ -5,6 +5,7 @@ import FormBuilderByHackers.DataAccessObject.UserDetailsRepository;
 import FormBuilderByHackers.DataTransferObject.LoginDTO;
 import FormBuilderByHackers.DataTransferObject.UserRegistrationDTO;
 import FormBuilderByHackers.Model.UserDetails;
+import FormBuilderByHackers.Utilities.CookieUtil;
 import FormBuilderByHackers.Utilities.GenericResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,6 +19,7 @@ import javax.servlet.http.Cookie;
 public class PublicDAOImplementation implements PublicDAO {
     @Autowired
     private UserDetailsRepository userDetailsRepository;
+
 
     @Override
     public GenericResponse userRegistration(UserRegistrationDTO registrationDTO) {
@@ -49,6 +51,7 @@ public class PublicDAOImplementation implements PublicDAO {
             if (!user.getPassword().equals(loginDto.getPassword())) {
                 return new GenericResponse("Password mismatch.");
             } else {
+                new CookieUtil().addCookie(loginDto.getEmailId(),"authorization");
                 genericResponse = new GenericResponse(user,true);
             }
         }

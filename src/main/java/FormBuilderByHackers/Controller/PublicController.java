@@ -3,8 +3,10 @@ package FormBuilderByHackers.Controller;
 import FormBuilderByHackers.DataTransferObject.LoginDTO;
 import FormBuilderByHackers.DataTransferObject.UserRegistrationDTO;
 import FormBuilderByHackers.Service.PublicService;
+import FormBuilderByHackers.Utilities.CookieUtil;
 import FormBuilderByHackers.Utilities.GenericResponse;
 
+import org.opensaml.xml.signature.G;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +38,12 @@ public class PublicController {
     @PostMapping("/login")
     public GenericResponse login(@RequestBody LoginDTO loginDTO){
         return publicService.validateUser(loginDTO);
+    }
+
+    @PostMapping("/logout")
+    public GenericResponse logout(){
+        new CookieUtil().removeCookie("authorization");
+        return new GenericResponse("logged out successfully",true);
     }
 
 }
