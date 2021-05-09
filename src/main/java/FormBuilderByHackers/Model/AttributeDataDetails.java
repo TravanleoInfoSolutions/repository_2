@@ -38,7 +38,7 @@ public class AttributeDataDetails implements Serializable {
     private Integer attributeOrder;
 
     @ManyToOne(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
-    @JoinColumn(name = "form_data_id", referencedColumnName = "form_data_id",insertable = false, updatable = false)
+    @JoinColumn(name = "form_data_id", referencedColumnName = "form_data_id")
     private FormData formData;
 
     @Column(name = "created_date", updatable = false)

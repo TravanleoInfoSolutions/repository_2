@@ -34,7 +34,7 @@ public class FormData implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "formData")
     @OrderBy("attribute_list_details_id ASC")
-    private Set<AttributeDataDetails> AttributeDataDetailsSet = new HashSet<>();
+    private Set<AttributeDataDetails> attributeDataDetailsSet = new HashSet<>();
 
     @Column(name = "created_date", updatable = false)
     private Timestamp createdDate = new Timestamp(new Date().getTime());
@@ -75,11 +75,11 @@ public class FormData implements Serializable {
     }
 
     public Set<AttributeDataDetails> getAttributeDataDetailsSet() {
-        return AttributeDataDetailsSet;
+        return attributeDataDetailsSet;
     }
 
     public void setAttributeDataDetailsSet(Set<AttributeDataDetails> attributeDataDetailsSet) {
-        AttributeDataDetailsSet = attributeDataDetailsSet;
+        this.attributeDataDetailsSet = attributeDataDetailsSet;
     }
 
     public Timestamp getCreatedDate() {

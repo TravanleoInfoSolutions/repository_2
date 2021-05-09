@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/admin")
@@ -29,50 +30,49 @@ public class AdminController {
 
     @PostMapping("/createFormAttribute")
     public GenericResponse createFormAttribute(@RequestBody @Valid FormAttributeDTO formAttributeDTO,
-                                               BindingResult bindingResult){
+                                               BindingResult bindingResult) {
         GenericResponse genericResponse;
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             genericResponse = new GenericResponse("Data provided is not sufficient to create Form Attribute");
-        }
-        else{
-            genericResponse = adminService.createFormAttribute(formAttributeDTO,userService.getCurrentUserDetails());
+        } else {
+            genericResponse = adminService.createFormAttribute(formAttributeDTO, userService.getCurrentUserDetails());
         }
         return genericResponse;
     }
 
     @GetMapping("/fetchAttributeTypes")
-    public GenericResponse fetchAttributeTypes(){
+    public GenericResponse fetchAttributeTypes() {
         return adminService.fetchAttributeTypes();
     }
 
     @PostMapping("/listAttributes")
-    public String listAttributes(@RequestBody ListDTO listDTO){
+    public String listAttributes(@RequestBody ListDTO listDTO) {
         UserDetails currentUserDetails = userService.getCurrentUserDetails();
-        return jsonConverter.convertEntityToJsonProxy(adminService.listAttributes(listDTO,currentUserDetails),
+        return jsonConverter.convertEntityToJsonProxy(adminService.listAttributes(listDTO, currentUserDetails),
                 new AttributeListStrategy());
     }
 
     @PostMapping("/createForm")
-    public GenericResponse createForm(@RequestBody FormData formData){
+    public GenericResponse createForm(@RequestBody FormData formData) {
         UserDetails currentUserDetails = userService.getCurrentUserDetails();
-        return adminService.createForm(formData,currentUserDetails);
+        return adminService.createForm(formData, currentUserDetails);
     }
 
     @PostMapping("/listForms")
-    public String listForms(@RequestBody ListDTO listDTO){
+    public String listForms(@RequestBody ListDTO listDTO) {
         UserDetails currentUserDetails = userService.getCurrentUserDetails();
-        return jsonConverter.convertEntityToJsonProxy(adminService.listForms(listDTO,currentUserDetails),
+        return jsonConverter.convertEntityToJsonProxy(adminService.listForms(listDTO, currentUserDetails),
                 new FormListStrategy());
     }
 
     @GetMapping("/fetchFormsById")
-    public String fetchFormsById(@RequestParam Long formDataId){
-        return jsonConverter.convertEntityToJsonProxy(adminService.fetchFormsById(formDataId),new FormViewStrategy());
+    public String fetchFormsById(@RequestParam Long formDataId) {
+        return jsonConverter.convertEntityToJsonProxy(adminService.fetchFormsById(formDataId), new FormViewStrategy());
     }
 
     @GetMapping("/fetchAttributeById")
-    public GenericResponse fetchAttributeById(@RequestParam Long attributeId){
-        return adminService.fetchAttributeById(attributeId);
+    public String fetchAttributeById(@RequestParam Long attributeId) {
+        return jsonConverter.convertEntityToJsonProxy(adminService.fetchAttributeById(attributeId), new AttributeListStrategy());
     }
 
 }

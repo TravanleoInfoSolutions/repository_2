@@ -23,7 +23,7 @@ public class FormAttribute implements Serializable {
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="form_attribute_gen")
     @SequenceGenerator(name="form_attribute_gen", sequenceName="FormAttribute_SEQ",allocationSize = 10)
     @Column(name = "attribute_id")
-    private long attributeId;
+    private Long attributeId;
 
     @Column(name = "attribute_name",length = 800)
     private String attributeName;
@@ -43,7 +43,7 @@ public class FormAttribute implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "attributeData")
     @OrderBy("attribute_list_details_id ASC")
-    private Set<AttributeListDetails> AttributeListDetailsSet = new HashSet<>();
+    private Set<AttributeListDetails> attributeListDetailsSet = new HashSet<>();
 
     @Column(name = "created_user_id")
     private long createdUserId;
@@ -71,11 +71,11 @@ public class FormAttribute implements Serializable {
 
     }
 
-    public long getAttributeId() {
+    public Long getAttributeId() {
         return attributeId;
     }
 
-    public void setAttributeId(long attributeId) {
+    public void setAttributeId(Long attributeId) {
         this.attributeId = attributeId;
     }
 
@@ -120,11 +120,11 @@ public class FormAttribute implements Serializable {
     }
 
     public Set<AttributeListDetails> getAttributeListDetailsSet() {
-        return AttributeListDetailsSet;
+        return attributeListDetailsSet;
     }
 
     public void setAttributeListDetailsSet(Set<AttributeListDetails> attributeListDetailsSet) {
-        AttributeListDetailsSet = attributeListDetailsSet;
+        this.attributeListDetailsSet = attributeListDetailsSet;
     }
 
     public long getCreatedUserId() {

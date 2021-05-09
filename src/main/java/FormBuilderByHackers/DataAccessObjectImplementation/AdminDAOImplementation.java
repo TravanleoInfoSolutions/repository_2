@@ -45,6 +45,7 @@ public class AdminDAOImplementation implements AdminDAO {
             formAttribute.setCreatedUserId(currentUserDetails.getUserDetailsId());
             Set<AttributeListDetails> attributeListDetailsSet = formAttributeDTO.getAttributeListDetailsSet();
             if(CollectionUtils.isNotEmpty(attributeListDetailsSet)){
+                System.err.println("in here>>>>>>1111");
                 attributeListDetailsSet.forEach(alds -> alds.setAttributeData(formAttribute));
                 formAttribute.setAttributeListDetailsSet(attributeListDetailsSet);
             }
@@ -56,6 +57,7 @@ public class AdminDAOImplementation implements AdminDAO {
             genericResponse = new GenericResponse(response,true);
         }
         catch (Exception e){
+            e.printStackTrace();
             genericResponse = new GenericResponse("unexpected error");
         }
         return genericResponse;
@@ -130,6 +132,7 @@ public class AdminDAOImplementation implements AdminDAO {
             genericResponse = new GenericResponse(formAttribute,true);
         }
         catch (Exception e){
+            e.printStackTrace();
             genericResponse = new GenericResponse("unexpected error");
         }
         return genericResponse;

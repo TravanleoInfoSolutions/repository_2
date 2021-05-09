@@ -15,11 +15,18 @@ public class CookieUtil {
     public void addCookie(String data, String cookieName,HttpServletRequest request, HttpServletResponse response) {
         String encodedData = new String(Base64.encodeBase64(data.getBytes()));
         Cookie uiColorCookie = new Cookie(cookieName, encodedData);
+//        uiColorCookie.setMaxAge(10000);
+        uiColorCookie.setDomain("localhost");
+        uiColorCookie.setPath("/");
+//        uiColorCookie.setSecure(request.isSecure());
+//        uiColorCookie.setHttpOnly(true);
         response.addCookie(uiColorCookie);
     }
 
     public void removeCookie(String cookieName,HttpServletResponse response) {
         Cookie uiColorCookie = new Cookie(cookieName, null);
+        uiColorCookie.setDomain("localhost");
+        uiColorCookie.setPath("/");
         uiColorCookie.setMaxAge(0);
         response.addCookie(uiColorCookie);
     }

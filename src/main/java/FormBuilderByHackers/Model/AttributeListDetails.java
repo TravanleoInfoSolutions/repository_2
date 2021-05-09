@@ -24,8 +24,8 @@ public class AttributeListDetails implements Serializable {
     @Column(name = "value",length = 800)
     private String value;
 
-    @ManyToOne(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
-    @JoinColumn(name = "attribute_id", referencedColumnName = "attribute_id",insertable = false, updatable = false)
+    @ManyToOne(cascade = { CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH }, fetch = FetchType.LAZY)
+    @JoinColumn(name = "attribute_id", referencedColumnName = "attribute_id")
     private FormAttribute attributeData;
 
     @Column(name = "created_date", updatable = false)
