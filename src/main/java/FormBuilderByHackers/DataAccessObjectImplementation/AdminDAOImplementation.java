@@ -48,9 +48,12 @@ public class AdminDAOImplementation implements AdminDAO {
                 attributeListDetailsSet.forEach(alds -> alds.setAttributeData(formAttribute));
                 formAttribute.setAttributeListDetailsSet(attributeListDetailsSet);
             }
-            formAttributeRepository.save(formAttribute);
-            genericResponse = new GenericResponse(formAttributeDTO.getAttributeId() != null
-                    ?"Form Attribute updated successfully" :"Form Attribute created successfully",true);
+            FormAttribute savedFormAttribute = formAttributeRepository.save(formAttribute);
+            Map<String,Object> response = new HashMap<>();
+            response.put("attributeId",savedFormAttribute.getAttributeId());
+            response.put("message",formAttributeDTO.getAttributeId() != null
+                    ?"Form Attribute updated successfully" :"Form Attribute created successfully");
+            genericResponse = new GenericResponse(response,true);
         }
         catch (Exception e){
             genericResponse = new GenericResponse("unexpected error");
