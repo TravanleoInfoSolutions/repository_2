@@ -9,6 +9,8 @@ import FormBuilderByHackers.Utilities.GenericResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.regex.Pattern;
 
 @Service
@@ -28,7 +30,7 @@ public class PublicServiceImplementation implements PublicService {
     }
 
     @Override
-    public GenericResponse validateUser(LoginDTO loginDto) {
-        return publicDAO.validateUser(loginDto);
+    public GenericResponse validateUser(LoginDTO loginDto,HttpServletRequest request, HttpServletResponse response) {
+        return publicDAO.validateUser(loginDto,request,response);
     }
 }

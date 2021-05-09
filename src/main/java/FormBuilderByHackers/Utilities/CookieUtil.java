@@ -12,13 +12,7 @@ public class CookieUtil {
     @Value("${SERVER.URL}")
     private String SERVER_URL;
 
-    @Autowired
-    HttpServletRequest request;
-
-    @Autowired
-    HttpServletResponse response;
-
-    public void addCookie(String data, String cookieName) {
+    public void addCookie(String data, String cookieName,HttpServletRequest request, HttpServletResponse response) {
         String encodedData = new String(Base64.encodeBase64(data.getBytes()));
         Cookie uiColorCookie = new Cookie(cookieName, encodedData);
         uiColorCookie.setMaxAge(10000);

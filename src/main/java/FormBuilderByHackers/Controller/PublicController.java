@@ -12,6 +12,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 /**
@@ -36,8 +38,8 @@ public class PublicController {
         return publicService.userRegistration(registrationDTO);
     }
     @PostMapping("/login")
-    public GenericResponse login(@RequestBody LoginDTO loginDTO){
-        return publicService.validateUser(loginDTO);
+    public GenericResponse login(@RequestBody LoginDTO loginDTO,HttpServletRequest request, HttpServletResponse response){
+        return publicService.validateUser(loginDTO,request,response);
     }
 
     @PostMapping("/logout")

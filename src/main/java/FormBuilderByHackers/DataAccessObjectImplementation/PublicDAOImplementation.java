@@ -13,6 +13,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Transactional
 @Repository
@@ -28,9 +30,7 @@ public class PublicDAOImplementation implements PublicDAO {
             UserDetails userDetails = userDetailsRepository.findByEmailId(registrationDTO.getEmailId());
             if (null == userDetails) {
                 userDetails = new UserDetails(registrationDTO);
-                BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-                String encodedPassword = passwordEncoder.encode(userDetails.getPassword());
-                userDetails.setPassword(encodedPassword);
+                userDetails.setPassword(registrationDTO.getPassword());
                 userDetailsRepository.save(userDetails);
                 genericResponse = new GenericResponse("user Registered successfully", true);
             } else {
@@ -42,7 +42,7 @@ public class PublicDAOImplementation implements PublicDAO {
         return genericResponse;
     }
     @Override
-    public GenericResponse validateUser(LoginDTO loginDto) {
+    public GenericResponse validateUser(LoginDTO loginDto,HttpServletRequest request, HttpServletResponse response) {
         GenericResponse genericResponse;
         UserDetails user = userDetailsRepository.findByEmailId(loginDto.getEmailId());
         if (user == null) {
@@ -51,7 +51,7 @@ public class PublicDAOImplementation implements PublicDAO {
             if (!user.getPassword().equals(loginDto.getPassword())) {
                 return new GenericResponse("Password mismatch.");
             } else {
-                new CookieUtil().addCookie(loginDto.getEmailId(),"authorization");
+                new CookieUtil().addCookie(loginDto.getEmailId(),"authorization",request,response);
                 genericResponse = new GenericResponse(user,true);
             }
         }
