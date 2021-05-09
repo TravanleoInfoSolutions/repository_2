@@ -48,4 +48,8 @@ public class AdminServiceImplementation implements AdminService {
         FormData formData = formDataRepository.findById(formDataId).orElse(null);
         return new GenericResponse(formData,true);
     }
+
+    public GenericResponse fetchAttributeById(Long attributeId){
+        return adminDAO.fetchAttributeById(attributeId);
+    }
 }
