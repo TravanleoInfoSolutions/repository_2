@@ -39,7 +39,7 @@ public class AttributeDataDetails implements Serializable {
 
     @ManyToOne(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
     @JoinColumn(name = "form_data_id", referencedColumnName = "form_data_id")
-    private FormData formData;
+    private FormSessions formSessions;
 
     @Column(name = "created_date", updatable = false)
     private Timestamp createdDate = new Timestamp(new Date().getTime());
@@ -95,12 +95,12 @@ public class AttributeDataDetails implements Serializable {
         this.attributeOrder = attributeOrder;
     }
 
-    public FormData getFormData() {
-        return formData;
+    public FormSessions getFormSessions() {
+        return formSessions;
     }
 
-    public void setFormData(FormData formData) {
-        this.formData = formData;
+    public void setFormSessions(FormSessions formSessions) {
+        this.formSessions = formSessions;
     }
 
     public Timestamp getCreatedDate() {

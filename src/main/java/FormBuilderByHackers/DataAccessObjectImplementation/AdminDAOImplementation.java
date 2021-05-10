@@ -6,10 +6,7 @@ import FormBuilderByHackers.DataAccessObject.FormAttributeRepository;
 import FormBuilderByHackers.DataAccessObject.FormDataRepository;
 import FormBuilderByHackers.DataTransferObject.FormAttributeDTO;
 import FormBuilderByHackers.DataTransferObject.ListDTO;
-import FormBuilderByHackers.Model.AttributeListDetails;
-import FormBuilderByHackers.Model.FormAttribute;
-import FormBuilderByHackers.Model.FormData;
-import FormBuilderByHackers.Model.UserDetails;
+import FormBuilderByHackers.Model.*;
 import FormBuilderByHackers.Utilities.GenericResponse;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.IterableUtils;
@@ -91,7 +88,23 @@ public class AdminDAOImplementation implements AdminDAO {
         GenericResponse genericResponse;
         try{
             formData.setCreatedUserId(currentUserDetails.getUserDetailsId());
-            formData.getAttributeDataDetailsSet().forEach(adds -> adds.setFormData(formData));
+            for(FormSessions formSession : formData.getFormSessionSet()){
+                formSession.setFormData(formData);
+                for(AttributeDataDetails attributeDataDetails : formSession.getAttributeDataDetailsSet()){
+                    if(attributeDataDetails.getAttributeId() == 0 && attributeDataDetails.getFormAttribute() != null){
+                        FormAttribute attribute = attributeDataDetails.getFormAttribute();
+                        attribute.setCreatedUserId(currentUserDetails.getUserDetailsId());
+                        if(CollectionUtils.isNotEmpty(attribute.getAttributeListDetailsSet())){
+                            for(AttributeListDetails alds : attribute.getAttributeListDetailsSet()){
+                                alds.setAttributeData(attribute);
+                            }
+                        }
+                        attribute = formAttributeRepository.save(attribute);
+                        attributeDataDetails.setAttributeId(attribute.getAttributeId());
+                    }
+                    attributeDataDetails.setFormSessions(formSession);
+                }
+            }
             FormData savedFormData = formDataRepository.save(formData);
             Map<String,Object> response = new HashMap<>();
             response.put("formDataId",savedFormData.getFormDataId());

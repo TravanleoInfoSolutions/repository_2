@@ -14,7 +14,7 @@ public class StartUpDataLoader implements ApplicationListener<ContextRefreshedEv
 private AttributeTypeRepository attributeTypeRepository;
 
 
-boolean updateDatabaseMasters = false;
+boolean updateDatabaseMasters = true;
     public void onApplicationEvent(final ContextRefreshedEvent event) {
         if(updateDatabaseMasters) {
 
