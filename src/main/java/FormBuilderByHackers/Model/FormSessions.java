@@ -11,7 +11,7 @@ import java.util.Set;
 public class FormSessions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "form_data_id")
+    @Column(name = "form_session_id")
     private long formSessionId;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "formData")
