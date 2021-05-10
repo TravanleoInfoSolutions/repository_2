@@ -14,27 +14,27 @@ public class StartUpDataLoader implements ApplicationListener<ContextRefreshedEv
 private AttributeTypeRepository attributeTypeRepository;
 
 
-boolean updateDatabaseMasters = true;
+boolean updateDatabaseMasters = false;
     public void onApplicationEvent(final ContextRefreshedEvent event) {
         if(updateDatabaseMasters) {
 
             //Create Attribute Type
-            this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_BOOLEAN_NAME.getValue(),
-                    AttributeTypeLiterals.ATTRIBUTE_TYPE_BOOLEAN_CODE.getValue());
-            this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_INTEGER_NAME.getValue(),
-                    AttributeTypeLiterals.ATTRIBUTE_TYPE_INTEGER_CODE.getValue());
-            this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_LONG_NAME.getValue(),
-                    AttributeTypeLiterals.ATTRIBUTE_TYPE_LONG_CODE.getValue());
-            this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_DOUBLE_NAME.getValue(),
-                    AttributeTypeLiterals.ATTRIBUTE_TYPE_DOUBLE_CODE.getValue());
+//            this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_BOOLEAN_NAME.getValue(),
+//                    AttributeTypeLiterals.ATTRIBUTE_TYPE_BOOLEAN_CODE.getValue());
+//            this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_INTEGER_NAME.getValue(),
+//                    AttributeTypeLiterals.ATTRIBUTE_TYPE_INTEGER_CODE.getValue());
+//            this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_LONG_NAME.getValue(),
+//                    AttributeTypeLiterals.ATTRIBUTE_TYPE_LONG_CODE.getValue());
+//            this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_DOUBLE_NAME.getValue(),
+//                    AttributeTypeLiterals.ATTRIBUTE_TYPE_DOUBLE_CODE.getValue());
             this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_DATE_NAME.getValue(),
                     AttributeTypeLiterals.ATTRIBUTE_TYPE_DATE_CODE.getValue());
             this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_CHECKBOX_NAME.getValue(),
                     AttributeTypeLiterals.ATTRIBUTE_TYPE_CHECKBOX_CODE.getValue());
             this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_SINGLE_LIST_NAME.getValue(),
                     AttributeTypeLiterals.ATTRIBUTE_TYPE_SINGLE_LIST_CODE.getValue());
-            this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_MULTI_LIST_NAME.getValue(),
-                    AttributeTypeLiterals.ATTRIBUTE_TYPE_MULTI_LIST_CODE.getValue());
+//            this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_MULTI_LIST_NAME.getValue(),
+//                    AttributeTypeLiterals.ATTRIBUTE_TYPE_MULTI_LIST_CODE.getValue());
             this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_RADIO_BUTTON_NAME.getValue(),
                     AttributeTypeLiterals.ATTRIBUTE_TYPE_RADIO_BUTTON_CODE.getValue());
             this.createAttributeTypeIfNotFound(AttributeTypeLiterals.ATTRIBUTE_TYPE_TEXT_BOX_NAME.getValue(),
