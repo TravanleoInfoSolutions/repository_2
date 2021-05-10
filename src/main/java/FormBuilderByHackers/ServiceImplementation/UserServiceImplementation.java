@@ -20,14 +20,12 @@ public class UserServiceImplementation implements UserService {
 
     public UserDetails getCurrentUserDetails(){
         Cookie cookie = WebUtils.getCookie(request, "authorization");
-        UserDetails userDetails = userDetailsRepository.findByEmailId("sree6@travanleo.com");
-//        System.err.println("oneee");
-//        if (cookie != null) {
-//            System.err.println("twoo");
-//            byte[] decoded = Base64.decodeBase64(cookie.getValue());
-//            String emailId = new String(decoded);
-//            userDetails = userDetailsRepository.findByEmailId(emailId);
-//        }
+        UserDetails userDetails = null;
+        if (cookie != null) {
+            byte[] decoded = Base64.decodeBase64(cookie.getValue());
+            String emailId = new String(decoded);
+            userDetails = userDetailsRepository.findByEmailId(emailId);
+        }
         return userDetails;
     }
 }
