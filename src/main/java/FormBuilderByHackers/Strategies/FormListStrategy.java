@@ -7,7 +7,7 @@ public class FormListStrategy implements ExclusionStrategy {
 
     @Override
     public boolean shouldSkipField(FieldAttributes fieldAttributes) {
-        return fieldAttributes.getName().equalsIgnoreCase("AttributeDataDetailsSet");
+        return fieldAttributes.getName().equalsIgnoreCase("formSessionSet");
     }
 
     @Override
